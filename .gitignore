@@ -136,14 +136,49 @@ runs/
 *.csv
 
 # ==========================================================
-# Secrets
+# Secrets — NEVER commit API keys, credentials, GCP service accounts
 # ==========================================================
 .env
 .env.*
 *.env
 secrets.json
+secrets.py
 node_modules/
 package-lock.json
+
+# ---------- GOOGLE CLOUD / GCP SERVICE ACCOUNT KEYS (CRITICAL!) ----------
+# Match ALL patterns like: plante-440018-3361026f63cc.json, *.iam.gserviceaccount.com.json, etc.
+plante-*.json
+*-*-*-*-*-gcp-*.json
+*service_account*.json
+*service-account*.json
+*gserviceaccount*.json
+*gcp-key*.json
+*gcp_key*.json
+*google-cloud-key*.json
+*google_cloud_credentials*.json
+# Any JSON that contains private_key / client_email (GCP / Firebase SA)
+# These are also detected on push by pre-commit hooks; keep list aggressive
+*credentials*.json
+*creds*.json
+firebase-adminsdk*.json
+api-key*.txt
+api_key*.txt
+apikey*.txt
+password*.txt
+*token*.json
+# ---------- CERT / KEY FILES ----------
+*.pem
+*.p12
+*.pfx
+*.key
+*.crt
+*.cer
+*.jks
+*.keystore
+id_rsa*
+id_ed25519*
+.ssh/
 
 # ==========================================================
 # Arduino IDE caches
